@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS bee_log_db;
+CREATE DATABASE bee_log_db;
