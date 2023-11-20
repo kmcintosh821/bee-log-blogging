@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bee Log Blogging</title>
+</head>
+<body>
+    <header class="row justify-between align-center">
+        <a href='/'><h2>The Bee Log</h1></a>
+        
+        <nav class="row align-center">
+            <div class="user-dropdown">
+                {{#if user}}
+                    <button class="dropbtn">{{user.username}}</button>
+                    <div class="dropcontent">
+                        <a href='/feed'>Feed</a>
+                        <a href='/logout'>Log Out</a>
+                    </div>
+                {{else}}
+                    <button class="dropbtn">Join Us!</button>
+                    <div class="dropcontent">
+                        <a href='/register'>Register</a>
+                        <a href='/login'>Log In</a>
+                    </div>
+                {{/if}}
+            </div>
+        </nav>
+    </header>
+
+    {{{body}}}
+
+    <footer class="text-center column align-center">
+        <span>©2023 Kendall McIntosh</span>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>

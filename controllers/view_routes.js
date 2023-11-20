@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { User, Post } = require('../models')
 const { auth, isAuthed, isLoggedIn } = require('./utils/authenticate')
-const { rootRD, loginRD } = require('./utils/redirects')
 
 renderAuthPage = (page) => router.get(`/${page}`, isLoggedIn, auth, (req, res) => {
     res.render(page, {

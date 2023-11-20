@@ -1,6 +1,6 @@
 module.exports = {
     rootRD(res) {res.redirect('./')},
-    dashRD(res) {res.redirect('./dashboard')},
+    feedRD(res) {res.redirect('./feed')},
     loginRD(res) {res.redirect('./login')},
     regRD(res) {res.redirect('./register')}
 }

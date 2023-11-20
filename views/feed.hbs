@@ -1,0 +1,32 @@
+<h1>What's The Buzz?</h1>
+
+<section id="buzzform">
+    <button class="buzzbutton">Create a new Buzz</button>
+    <form class="buzzmaker" action="/new-post" method="POST">
+        {{#each errors}}
+        <p class="error">{{this}}</p>
+        {{/each}}
+        <input type="text" name="title" placeholder="Buzz Title" required>
+        <p>Characters left: <span id="count">1000</span></p>
+        <input type="text" id="content" name="text" placeholder="Begin Buzzing Here" required>
+        <button id="submit" type="submit">Buzz it!</button>
+    </form>
+</section>
+
+<section id="posts">
+    {{#each posts}}
+    <div class="post">
+        <div class="post-head">
+            <p class="timestamp">{{timestamp}}</p>
+            <h2>{{title}}</h2>
+            <p class="author">{{author.username}}</p>
+            <button class="editbutton" data-id="{{id}}">✒️</button>
+            <button class="deletebutton" data-id="{{id}}">✖️</button>
+        </div>
+        <div class="post-body">
+            <p class="post-content">{{content}}</p>
+            <input type="text" class="editbox" style="display: none;">
+        </div>
+    </div>
+    {{/each}}
+</section>

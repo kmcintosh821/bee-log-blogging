@@ -1,24 +1,24 @@
 const router = require('express').Router();
 const Post = require('../models')
-const { isLoggedIn, isAuthed, auth } = require('./utils/authenticate')
-const { dashRD, loginRD } = require('./utils/redirects')
+const { isAuthed, auth } = require('./utils/authenticate')
+const { feedRD } = require('./utils/redirects')
 
 logErr = (req, res, err) => {
     console.log(err);
     if (err.errors) req.session.errors = err.errors.map(obj => obj.message);
-    dash(res);
+    feedRD(res);
 }
 
 err404 = (res) => {
     res.status(404).json({ error: 'Post not found'})
-    dash(res);
+    feedRD(res);
 }
 
 router.post('/new-post', isAuthed, auth, async (req, res) => {
     try {
         const post = await Post.create(req.body)
         await req.user.addPost(post)
-        dash(res);
+        feedRD(res);
     } catch (err) {logErr(req, res, err)}
 })
 
@@ -37,7 +37,7 @@ router.delete('/delete/:id', async (req, res) => {
         if (!post) return err404(res)
 
         await post.destroy()
-        dash(res);
+        feedRD(res);
     } catch (err) {logErr(req, res, err)}
 })
 
