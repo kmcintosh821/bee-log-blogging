@@ -5,9 +5,16 @@ const is_prod = process.env.PORT;
 
 let sequelize;
 if(is_prod) {
-    sequelize = new Sequelize(process.env.JAWSDB_URL, {
-        host: 'localhost',
-        dialect: 'mysql'})
+    sequelize = new Sequelize({"production": {
+        "use_env_variable": "DATABASE_URL",
+        "dialect": "postgres",
+        "dialectOptions": {
+           "ssl": {
+             "require": true,
+             "rejectUnauthorized": false
+           }
+         }
+       }})
 } else sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USERNAME,
