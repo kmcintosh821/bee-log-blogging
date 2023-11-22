@@ -10,10 +10,10 @@ renderAuthPage = (page) => router.get(`/${page}`, isLoggedIn, auth, (req, res) =
     req.session.errors = [];
 })
 
-renderPostPage = (page) => res.render(page, {
+renderPostPage = (page) => router.get(`/${page}`, (req, res) => {res.render(page, {
     user: req.user,
     posts: posts.map(obj => obj.get({ plain: true}))
-})
+})})
 
 renderAuthPage('login')
 renderAuthPage('register')
