@@ -30,7 +30,7 @@ router.put('/edit', isAuthed, auth, async(req, res) => {
     } catch (err) {logErr(req, res, err)}
 })
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     try {
         const post = await Post.findByPk(id)
