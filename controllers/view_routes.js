@@ -10,10 +10,10 @@ renderAuthPage = (page) => router.get(`/${page}`, isLoggedIn, auth, (req, res) =
     req.session.errors = [];
 })
 
-renderPostPage = (page) => router.get(`/${page}`, (req, res) => {res.render(page, {
+renderPostPage = (req, res, page) => res.render(page, {
     user: req.user,
     posts: posts.map(obj => obj.get({ plain: true}))
-})})
+})
 
 renderAuthPage('login')
 renderAuthPage('register')
@@ -25,7 +25,7 @@ router.get('/', auth, async (req, res) => {
             as: 'author'
         }
     })
-    renderPostPage('home')
+    renderPostPage(req, res, 'home')
 })
 
 router.get('/dashboard', isAuthed, auth, async (req, res) => {
@@ -37,7 +37,7 @@ router.get('/dashboard', isAuthed, auth, async (req, res) => {
             as: 'author'
         }
     })
-    renderPostPage('dashboard')
+    renderPostPage(req, res, 'dashboard')
     
 })
 
