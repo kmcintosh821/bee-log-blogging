@@ -5,13 +5,13 @@ const is_prod = process.env.PORT;
 
 let sequelize;
 if(is_prod) {
-    sequelize = new Sequelize({"production": {
-        "use_env_variable": "DATABASE_URL",
-        "dialect": "postgres",
-        "dialectOptions": {
-           "ssl": {
-             "require": true,
-             "rejectUnauthorized": false
+    sequelize = new Sequelize({production: {
+        use_env_variable: "DATABASE_URL",
+        dialect: "postgres",
+        dialectOptions: {
+           ssl: {
+             require: true,
+             rejectUnauthorized: false
            }
          }
        }})
