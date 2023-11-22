@@ -7,13 +7,13 @@ let sequelize;
 if(is_prod) {
     sequelize = new Sequelize(process.env.JAWSDB_URL, {
         host: 'localhost',
-        dialect: 'postgres'})
+        dialect: 'mysql'})
 } else sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USERNAME,
     process.env.DB_PASSWORD, {
     host: 'localhost',
-    dialect: 'postgres',
+    dialect: 'mysql',
     // Turn off SQL logging in the terminal
     logging: false
 });
