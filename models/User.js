@@ -34,7 +34,7 @@ User.init({
     modelName: 'user',
     sequelize: db,
     hooks: {
-        async encrypt(user) {
+        async beforeCreate(user) {
             user.password = await hash(user.password, 10);
             return user;
         }

@@ -2,7 +2,7 @@ const express = require('express');
 const { view_routes, user_routes, blog_routes } = require('./controllers')
 const db = require('./config/connection')
 const session = require('express-session')
-const { engine } = require('express-session');
+const { engine } = require('express-handlebars');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3333;
