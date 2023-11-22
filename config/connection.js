@@ -13,6 +13,6 @@ if(is_prod) {
     host: 'localhost',
     dialect: 'mysql',
     // Turn off SQL logging in the terminal
-    // logging: false
+    logging: false
 });
 module.exports = sequelize;

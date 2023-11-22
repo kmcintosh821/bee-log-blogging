@@ -25,10 +25,13 @@ router.get('/', auth, async (req, res) => {
             as: 'author'
         }
     })
-    renderPostPage(req, res, 'home')
+    res.render('feed', {
+        user: req.user,
+        posts: posts.map(obj => obj.get({ plain: true}))
+    })
 })
 
-router.get('/dashboard', isAuthed, auth, async (req, res) => {
+router.get('/feed', isAuthed, auth, async (req, res) => {
     const posts = await Post.findAll({
         where: {
             user_id: req.session.user_id
@@ -37,7 +40,10 @@ router.get('/dashboard', isAuthed, auth, async (req, res) => {
             as: 'author'
         }
     })
-    renderPostPage(req, res, 'dashboard')
+    res.render('feed', {
+        user: req.user,
+        posts: posts.map(obj => obj.get({ plain: true}))
+    })
     
 })
 
